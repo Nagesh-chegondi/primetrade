@@ -63,6 +63,7 @@ console.log(API)
       else{
         alert(data.message||"signup failed")
     }
+    }
     console.log(isSignup ? "Signup Response:" : "Signin Response:", data);
   };
 
