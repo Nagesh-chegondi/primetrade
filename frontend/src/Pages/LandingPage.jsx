@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+const API = import.meta.env.VITE_BACKEND_URI;
 const LandingPage = () => {
   const [isSignup, setIsSignup] = useState(true);
   const navigate = useNavigate()
@@ -28,10 +29,10 @@ const LandingPage = () => {
   // ⭐ Combined Signup + Signin Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+console.log(API)
     const url = isSignup
-      ? "http://localhost:5000/auth/signup"
-      : "http://localhost:5000/auth/signin";
+      ? `${API}/auth/signup`
+      : `${API}/auth/signin`;
 
     const body = isSignup
       ? formData // name + email + password

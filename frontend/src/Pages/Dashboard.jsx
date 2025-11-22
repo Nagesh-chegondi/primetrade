@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import EditModal from "./Edit";
-import Create from "./Create";
+import EditModal from "../components/Edit";
+import Create from "../components/Create";
+const API = import.meta.env.VITE_BACKEND_URI;
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ const Dashboard = () => {
     async function getdata() {
       try {
         // Fetch Dashboard Data
-        const response = await fetch("http://localhost:5000/info/dashboard", {
+        const response = await fetch(`${API}/info/dashboard`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -97,7 +98,7 @@ const Dashboard = () => {
         }
 
         // Fetch User Details (Dummy API)
-        const userResponse = await fetch("http://localhost:5000/user/info", {
+        const userResponse = await fetch(`${API}/user/info`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -170,7 +171,7 @@ const Dashboard = () => {
   // Delete row - FIXED
   async function deleteRow(_id) {
     try {
-      const response = await fetch("http://localhost:5000/info/dashboarddelete", {
+      const response = await fetch(`${API}/info/dashboarddelete`, {
         "method": "DELETE",
         "headers": {
           "Content-Type": "application/json",

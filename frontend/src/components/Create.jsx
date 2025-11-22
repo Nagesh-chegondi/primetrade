@@ -1,4 +1,6 @@
 import { useState } from "react"
+const API = import.meta.env.VITE_BACKEND_URI;
+
 export default function Create({ showform, setshowform, setFiltered, setRows }) {
   const [title, settittle] = useState('')
   const [category, setcategory] = useState('')
@@ -9,7 +11,7 @@ export default function Create({ showform, setshowform, setFiltered, setRows }) 
       category: category,
       status: status
     }
-    const response = await fetch("http://localhost:5000/info/dashboarddata", {
+    const response = await fetch(`${API}/info/dashboarddata`, {
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",

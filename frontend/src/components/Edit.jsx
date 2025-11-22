@@ -1,4 +1,5 @@
 import { useState } from "react";
+const API = import.meta.env.VITE_BACKEND_URI;
 export default function EditModal({ data, onClose, setload, load }) {
   const [title, setTitle] = useState(data.title);
   const [category, setCategory] = useState(data.category);
@@ -13,7 +14,7 @@ export default function EditModal({ data, onClose, setload, load }) {
       category,
       status
     };
-    const response = await fetch("http://localhost:5000/info/dashboardupdate", {
+    const response = await fetch(`${API}/info/dashboardupdate`, {
       "method": "PUT",
       "headers": {
         "Content-Type": "application/json",
