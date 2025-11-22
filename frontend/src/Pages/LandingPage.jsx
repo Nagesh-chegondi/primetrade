@@ -50,6 +50,18 @@ console.log(API)
         localStorage.setItem("token", data.token)
         navigate('/dashboard')
       }
+      else{
+        alert(data.message||"signin failed")
+      }
+    }
+    else{
+      if(res.ok){
+       alert('User signed up successfully! Click OK to login.');
+      // Redirect to login form after alert
+      setIsSignup(false);
+      }
+      else{
+        alert(data.message||"signup failed")
     }
     console.log(isSignup ? "Signup Response:" : "Signin Response:", data);
   };
